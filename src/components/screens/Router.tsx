@@ -9,6 +9,8 @@ import ProductDetails from './ProductDetails'
 import NotFound from './NotFound'
 import Products from './Products'
 import Category from './Category'
+import LoginPage from './Login'
+import RegisterPage from './Register'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
   {
     path: '/products/:id',
     element: <ProductDetails />
+  },
+  {
+    path: '/login',
+    element: <LoginPage />
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />
   },
   {
     path: '*',

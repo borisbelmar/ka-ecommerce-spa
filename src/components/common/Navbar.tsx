@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom"
 import ContainerLayout from "../layouts/ContainerLayout"
 import CartButton from "./CartButton"
+import LoginButton from "./LoginButton"
+import LogoutButton from "./LogoutButton"
+import { useSession } from "@/atoms/session.atom"
 
 export default function Navbar () {
+  const session = useSession()
+
   return (
     <>
       <nav className="bg-gray-900 text-white py-2">
@@ -18,11 +23,14 @@ export default function Navbar () {
               <li className="">
                 <Link to="/about" className="hover:text-gray-400">About</Link>
               </li>
+              {session?.user?.role === 'ADMIN' && (
+                <li className="">
+                  <Link to="/dashboard" className="hover:text-gray-400">Dashboard</Link>
+                </li>
+              )}
             </ol>
             <div className="flex items-center gap-4">
-              <button className="bg-indigo-500 hover:bg-indigo-600 font-semibold text-white px-4 py-2 rounded">
-                Iniciar sesión
-              </button>
+              {!session ? <LoginButton /> : <LogoutButton />}
               <CartButton />
             </div>
           </div>

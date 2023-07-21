@@ -20,7 +20,7 @@ export default function ProductGrid ({ products }: ProductGridProps) {
             key={product.id}
             id={product.id}
             title={product.title}
-            image={product.image}
+            image={product.images[0]}
             price={product.price}
             inCart={!!cart[product.id]}
             onAddToCart={() => addToCart(product)}

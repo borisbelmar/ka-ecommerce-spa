@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryHead should match snapshot 1`] = `
+<div>
+  <div
+    class="bg-indigo-500 text-white"
+  >
+    <section
+      class="w-full mx-auto max-w-screen-xl px-8 items-center justify-between py-24"
+    >
+      <h1
+        class="font-semibold text-3xl"
+      >
+        Productos en la categoría 
+        <span
+          class="uppercase font-bold"
+        >
+          mock category name
+        </span>
+      </h1>
+      <p
+        class="text-lg opacity-80 mt-2"
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum
+      </p>
+    </section>
+  </div>
+</div>
+`;

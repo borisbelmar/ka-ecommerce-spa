@@ -4,6 +4,7 @@ import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persist
 
 import Router from "./components/screens/Router"
 import { CartContextProvider } from './components/context/CartContext'
+import { Toaster } from 'react-hot-toast'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,7 @@ function App() {
       <CartContextProvider>
         <Router />
       </CartContextProvider>
+      <Toaster />
     </PersistQueryClientProvider>
   )
 }

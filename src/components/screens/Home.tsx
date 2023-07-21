@@ -1,14 +1,12 @@
-import axios from "axios"
 import BaseLayout from "../layouts/BaseLayout"
 import ContainerLayout from "../layouts/ContainerLayout"
-import type { Product } from "@/types/Product"
 import { useQuery } from "@tanstack/react-query"
 import ProductGrid from "../common/ProductGrid"
+import getProductService from "@/services/getProductService"
 
 export default function Home() {
-  const { data: products } = useQuery<Product[]>(['products'], async () => {
-    const { data } = await axios.get<Product[]>('https://fakestoreapi.com/products')
-    return data
+  const { data: products } = useQuery(['products'], async () => {
+    return getProductService().getProducts()
   })
 
   return (

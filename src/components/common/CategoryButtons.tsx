@@ -1,8 +1,8 @@
 import cn from '@/utils/cn'
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import CategoryButtonItem from './CategoryButtonItem'
 import { useParams } from 'react-router'
+import getCategoryService from '@/services/getCategoryService'
 
 interface CategoryButtonsProps {
   className?: string
@@ -11,9 +11,8 @@ interface CategoryButtonsProps {
 export default function CategoryButtons({ className }: CategoryButtonsProps) {
   const { category } = useParams()
 
-  const { data: categories } = useQuery<string[]>(['categories'], async () => {
-    const { data } = await axios.get<string[]>('https://fakestoreapi.com/products/categories')
-    return data
+  const { data: categories } = useQuery(['categories'], async () => {
+    return getCategoryService().getCategories()
   })
 
   return (
@@ -22,8 +21,8 @@ export default function CategoryButtons({ className }: CategoryButtonsProps) {
         Todos
       </CategoryButtonItem>
       {categories?.map(item => (
-        <CategoryButtonItem key={item} to={`/category/${item}`} current={category === item}>
-          {item}
+        <CategoryButtonItem key={item.id} to={`/category/${item.id}`} current={category === item.id}>
+          {item.name}
         </CategoryButtonItem>
       ))}
     </div>

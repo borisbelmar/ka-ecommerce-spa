@@ -8,6 +8,7 @@ export default function Button ({ children, className, ...props }: ComponentProp
       className={cn(
         "bg-indigo-500 hover:bg-indigo-600 text-white px-2 py-2",
         "rounded text-sm font-semibold transition inline-flex items-center gap-2 justify-center",
+        "disabled:opacity-20 disabled:cursor-not-allowed",
         className
       )}
     >
