@@ -4,7 +4,6 @@ import { useCart } from "../context/CartContext"
 
 interface CartProductItemProps {
   cartItem: CartItem
-  badProp: string
 }
 
 export default function CartProductItem({ cartItem }: CartProductItemProps) {
