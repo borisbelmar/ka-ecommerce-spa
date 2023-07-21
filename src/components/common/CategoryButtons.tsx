@@ -12,7 +12,7 @@ export default function CategoryButtons({ className }: CategoryButtonsProps) {
   const { category } = useParams()
 
   const { data: categories } = useQuery(['categories'], async () => {
-    return getCategoryService().getCategories()
+    return await getCategoryService().getCategories()
   })
 
   return (
