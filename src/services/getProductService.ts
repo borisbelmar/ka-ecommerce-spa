@@ -1,9 +1,16 @@
 import { Product } from "@/types/Product"
 import axios from "axios"
 
-export default function getProductService () {
+interface ServiceOptions {
+  token?: string
+}
+
+export default function getProductService (options: ServiceOptions = {}) {
   const client = axios.create({
-    baseURL: import.meta.env.VITE_SERVICE_URL
+    baseURL: import.meta.env.VITE_SERVICE_URL,
+    headers: {
+      Authorization: options.token ? `Bearer ${options.token}` : ""
+    }
   })
 
   const getProducts = async (): Promise<Product[]> => {
@@ -21,9 +28,27 @@ export default function getProductService () {
     return data
   }
 
+  const createProduct = async (product: Omit<Product, 'id'>): Promise<Product> => {
+    const { data } = await client.post("/products", product)
+    return data
+  }
+
+  const updateProduct = async (product: Product): Promise<Product> => {
+    const { data } = await client.put(`/products/${product.id}`, product)
+    return data
+  }
+
+  const deleteProduct = async (id: string): Promise<void> => {
+    const { data } = await client.delete(`/products/${id}`)
+    return data
+  }
+
   return {
     getProducts,
     getProductById,
-    getProductsByCategoryId
+    getProductsByCategoryId,
+    createProduct,
+    updateProduct,
+    deleteProduct
   }
 }

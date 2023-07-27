@@ -32,12 +32,12 @@ export default function ProductDetails() {
       <ContainerLayout className="py-8">
         <Breadcrumbs currentLabel={product?.title || ''} className="mb-8" />
         <div className="flex flex-col md:flex-row gap-4">
-          <img src={product?.images?.[0]} alt={product?.title} className="w-full md:w-2/3 h-64 md:h-96 object-scale-down p-4 bg-white rounded-md" />
+          <img src={product?.image} alt={product?.title} className="w-full md:w-2/3 h-64 md:h-96 object-scale-down p-4 bg-white rounded-md" />
           <div className="p-4 flex flex-col gap-8 items-start">
             <div className="flex flex-col gap-4">
               <div className="space-y-1">
                 <h1 className="text-xl">{product?.title}</h1>
-                <p className="text-sm opacity-80 uppercase">{product?.categoriesId?.join(', ')}</p>
+                <p className="text-sm opacity-80 uppercase">{product?.categoryId}</p>
               </div>
               <p className="text-2xl font-bold">${product?.price}</p>
               <Button aria-label="Add to card">

@@ -25,7 +25,7 @@ export default function Navbar () {
               </li>
               {session?.user?.role === 'ADMIN' && (
                 <li className="">
-                  <Link to="/dashboard" className="hover:text-gray-400">Dashboard</Link>
+                  <Link to="/admin" className="hover:text-gray-400">Dashboard</Link>
                 </li>
               )}
             </ol>

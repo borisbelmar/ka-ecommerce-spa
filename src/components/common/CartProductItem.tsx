@@ -14,7 +14,7 @@ export default function CartProductItem({ cartItem }: CartProductItemProps) {
       <div className="flex items-center gap-2">
         <img
           className="w-16 h-16 object-cover rounded"
-          src={cartItem.product.images[0]}
+          src={cartItem.product.image}
           alt={cartItem.product.title}
         />
         <div className="flex flex-col">

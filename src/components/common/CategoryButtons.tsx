@@ -1,8 +1,7 @@
 import cn from '@/utils/cn'
-import { useQuery } from '@tanstack/react-query'
 import CategoryButtonItem from './CategoryButtonItem'
 import { useParams } from 'react-router'
-import getCategoryService from '@/services/getCategoryService'
+import useAllCategories from '@/hooks/useAllCategories'
 
 interface CategoryButtonsProps {
   className?: string
@@ -11,9 +10,7 @@ interface CategoryButtonsProps {
 export default function CategoryButtons({ className }: CategoryButtonsProps) {
   const { category } = useParams()
 
-  const { data: categories } = useQuery(['categories'], async () => {
-    return await getCategoryService().getCategories()
-  })
+  const { categories } = useAllCategories()
 
   return (
     <div className={cn('flex flex-wrap justify-center gap-4', className)}>
